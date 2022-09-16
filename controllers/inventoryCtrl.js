@@ -1,3 +1,4 @@
+// const Inventorymodel = require('../Models/Inventorymodel')
 const inventoryModel = require('../Models/Inventorymodel')
 const productModel = require('../Models/ProductModel')
 const warehouseModel = require('../Models/WarehouseModel')
@@ -52,6 +53,13 @@ async function deleteOneInventory(req, res) {
   
 }
 
+async function sumOfAllInventory(req, res) {
+   const totalQuantity = await inventoryModel.aggregate([{ $group: {_id:null, totalQty: {$sum: "$quantity"}}}])
+   console.log(totalQuantity)
+   res.render('inventory/allinventory', {title:'Total Quantity', totalQuantity})
+  }
+
+
 
 module.exports = {
      getAllInventory,
@@ -59,5 +67,6 @@ module.exports = {
      showOneInventory,
      updateOneInventory,
      getdeleteOneInventory,
-     deleteOneInventory
+     deleteOneInventory,
+     sumOfAllInventory
 }

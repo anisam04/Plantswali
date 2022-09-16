@@ -8,5 +8,6 @@ router.get('/inventory/:id', inventoryCtrl.showOneInventory);
 router.put('/inventory/:id', inventoryCtrl.updateOneInventory)
 router.get('/deleteinventory/:id', inventoryCtrl.getdeleteOneInventory)
 router.delete('/deleteinventory/:id', inventoryCtrl.deleteOneInventory)
+router.post('/allinventory', inventoryCtrl.sumOfAllInventory)
 
 module.exports = router;

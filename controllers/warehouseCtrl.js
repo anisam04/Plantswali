@@ -23,6 +23,10 @@ function createNewWarehouse(req, res) {
 
 }
 
+function deleteAWarehouse(req, res) {
+    
+}
+
 module.exports = {
     getAllWarehouses,
     newWarehouseForm,

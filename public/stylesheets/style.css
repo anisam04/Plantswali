@@ -1,5 +1,6 @@
 body {
-  padding: 50px;
+  background: url("../images/pawel-czerwinski-qzaIDFtzcZ0-unsplash\ \(1\).jpg") no-repeat center center fixed; 
+  background-size: cover;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 

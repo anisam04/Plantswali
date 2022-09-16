@@ -1,53 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <%- include('../partials/head') %>
 </head>
-<body class="container">
-<header>
-  <%- include('../partials/header') %>
-</header>
-<br>
 
-<form action="/allinventory" method="POST">
+<body class="container">
+  <header>
+    <%- include('../partials/header') %>
+  </header>
+  <br>
+
+  <form action="/allinventory" method="POST">
     <label>Item Name: </label>
     <select name="itemName" class="form-control">
-      <%- products.map(p => `<option value="${p._id}">${p.itemName}</option>`).join('') %>
+      <%- products.map(p=> `<option value="${p._id}">${p.itemName}</option>`).join('') %>
     </select><br>
     <label>Warehouse: </label>
-    <select name="warehouse"  class="form-control">
-        <%- warehouses.map(p => `<option value="${p._id}">${p.warehouseLocation}</option>`).join('') %>
-      </select><br>
+    <select name="warehouse" class="form-control">
+      <%- warehouses.map(p=> `<option value="${p._id}">${p.warehouseLocation}</option>`).join('') %>
+    </select><br>
     <label>Quantity: </label>
-    <input name="quantity" type="number" required class="form-control" /> <br />  
+    <input name="quantity" type="number" required class="form-control" /> <br />
     <button type="submit" class="btn btn-primary">Add to inventory</button>
   </form>
   <br>
-<hr>
+  <hr>
   <% if (inventories.length) { %>
-<% inventories.forEach(function(i){ %>
-  <div class="card-columns">
-  <div class="card">
-    <div class="card-body">
-        <h3><%= i.itemName.itemName  %></h3>
-        <p><%= i.warehouse.warehouseLocation  %></p>
-        <h3><%= i.quantity  %> </h3>
-        <a href="/inventory/<%= i._id %>" class="btn btn-primary">Edit</a>
-        <a href="/deleteinventory/<%= i._id %>" class="btn btn-primary">Delete</a>
+    <% inventories.forEach(function(i){ %>
+      <div class="card-group" style="display:inline-block;">
+       <!-- <div class="col-lg-3">  -->
+          <div class="card">
+            <div class="card-body">
+              <h3>
+                <%= i.itemName.itemName %>
+              </h3>
+              <p>
+                <%= i.warehouse.warehouseLocation %>
+              </p>
+              <h3>
+                <%= i.quantity %>
+              </h3>
+              <a href="/inventory/<%= i._id %>" class="btn btn-primary">Edit</a>
+              <a href="/deleteinventory/<%= i._id %>" class="btn btn-primary">Delete</a>
+            </div>
+          </div>
+       <!-- </div>  -->
+      </div>
+      <% }) %>
+        <% } else { %>
+          <h5>No inventory Added Yet</h5>
+          <% } %>
 
-        <!-- <button type="submit" class="btn btn-primary">Edit</button>
-        <button type="submit" class="btn btn-primary">Delete</button> -->
-    </div>
-  </div>
-  </div>
-  <% }) %> 
-  <% } else { %>
-  <h5>No inventory Added Yet</h5>
-  <% } %>
- 
 
-  <footer>
-    <%- include('../partials/footer') %>
-  </footer>
+
+            <footer>
+              <%- include('../partials/footer') %>
+            </footer>
 </body>
+
 </html>
