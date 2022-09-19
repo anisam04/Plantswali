@@ -24,9 +24,11 @@ function createNewInventory(req, res){
     } else {
         res.redirect('/allinventory');
     }
-})
+  })
 
 }
+
+
 async function showOneInventory(req, res){
   const inventory = await inventoryModel.findById(req.params.id)
   .populate('itemName')
@@ -53,11 +55,11 @@ async function deleteOneInventory(req, res) {
   
 }
 
-async function sumOfAllInventory(req, res) {
-   const totalQuantity = await inventoryModel.aggregate([{ $group: {_id:null, totalQty: {$sum: "$quantity"}}}])
-   console.log(totalQuantity)
-   res.render('inventory/allinventory', {title:'Total Quantity', totalQuantity})
-  }
+// async function sumOfAllInventory(req, res) {
+//    const totalQuantity = await inventoryModel.aggregate([{ $group: {_id:null, totalQty: {$sum: "$quantity"}}}])
+//    console.log(totalQuantity)
+//    res.render('inventory/allinventory', {title:'Total Quantity', totalQuantity})
+//   }
 
 
 
@@ -68,5 +70,5 @@ module.exports = {
      updateOneInventory,
      getdeleteOneInventory,
      deleteOneInventory,
-     sumOfAllInventory
+    //  sumOfAllInventory
 }

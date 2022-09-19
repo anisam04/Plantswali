@@ -16,6 +16,13 @@ const productSchema = new Schema({
       max: 500, 
       required: true
     },
+  totalVolume: {
+      type: Number,
+      min: 0,
+      max: 1000,
+      required: false,
+      default: 0
+    }
     }, 
 {
   timestamps: true

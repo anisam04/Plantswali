@@ -7,3 +7,10 @@ body {
 a {
   color: #00B7FF;
 }
+
+ul > li {
+
+  font-size: 20px;
+  font-weight: 500;
+  color: black;
+}

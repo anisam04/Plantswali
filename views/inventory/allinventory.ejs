@@ -12,15 +12,15 @@
   <br>
 
   <form action="/allinventory" method="POST">
-    <label>Item Name: </label>
+    <label class="fw-bold">Item Name: </label>
     <select name="itemName" class="form-control">
       <%- products.map(p=> `<option value="${p._id}">${p.itemName}</option>`).join('') %>
     </select><br>
-    <label>Warehouse: </label>
+    <label class="fw-bold">Warehouse: </label>
     <select name="warehouse" class="form-control">
       <%- warehouses.map(p=> `<option value="${p._id}">${p.warehouseLocation}</option>`).join('') %>
     </select><br>
-    <label>Quantity: </label>
+    <label class="fw-bold">Quantity: </label>
     <input name="quantity" type="number" required class="form-control" /> <br />
     <button type="submit" class="btn btn-primary">Add to inventory</button>
   </form>
@@ -29,23 +29,23 @@
   <% if (inventories.length) { %>
     <% inventories.forEach(function(i){ %>
       <div class="card-group" style="display:inline-block;">
-       <!-- <div class="col-lg-3">  -->
-          <div class="card">
-            <div class="card-body">
-              <h3>
-                <%= i.itemName.itemName %>
-              </h3>
-              <p>
-                <%= i.warehouse.warehouseLocation %>
-              </p>
-              <h3>
-                <%= i.quantity %>
-              </h3>
-              <a href="/inventory/<%= i._id %>" class="btn btn-primary">Edit</a>
-              <a href="/deleteinventory/<%= i._id %>" class="btn btn-primary">Delete</a>
-            </div>
+        <!-- <div class="col-lg-3">  -->
+        <div class="card">
+          <div class="card-body">
+            <h6>
+              <%= i.itemName.itemName %>
+            </h6>
+            <p>
+              <%= i.warehouse.warehouseLocation %>
+            </p>
+            <h6>
+              <%= i.quantity %>
+            </h6>
+            <a href="/inventory/<%= i._id %>" class="btn btn-primary">Edit</a>
+            <a href="/deleteinventory/<%= i._id %>" class="btn btn-primary">Delete</a>
           </div>
-       <!-- </div>  -->
+        </div>
+        <!-- </div>  -->
       </div>
       <% }) %>
         <% } else { %>
